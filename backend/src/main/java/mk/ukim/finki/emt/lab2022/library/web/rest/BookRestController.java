@@ -36,18 +36,28 @@ public class BookRestController {
                 map(book -> ResponseEntity.ok().body(book)).
                 orElseGet(() -> ResponseEntity.badRequest().build());
     }
-    @PutMapping("/edit/{id}")
+    @PostMapping("/edit/{id}")
     public ResponseEntity<Object> edit(@PathVariable Long id, @RequestBody BookDto bookDto) {
         return this.bookService.edit(id, bookDto)
                 .map(product -> ResponseEntity.ok().body(product))
                 .orElseGet(() -> ResponseEntity.badRequest().build());
     }
-    @DeleteMapping("/delete/{id}")
+    @PostMapping("/delete/{id}")
     public ResponseEntity deleteById(@PathVariable Long id) {
         this.bookService.delete(id);
         if(this.bookService.findById(id)==null) return ResponseEntity.ok().build();
         return ResponseEntity.badRequest().build();
     }
-
-
+    @PostMapping("/markAsTaken/{id}")
+    public ResponseEntity markAsTaken(@PathVariable Long id){
+        this.bookService.markAsTaken(id);
+        if(this.bookService.findById(id)==null) return ResponseEntity.ok().build();
+        return ResponseEntity.badRequest().build();
+    }
+    @PostMapping("/returnBook/{id}")
+    public ResponseEntity returnBook(@PathVariable Long id){
+        this.bookService.returnBook(id);
+        if(this.bookService.findById(id)==null) return ResponseEntity.ok().build();
+        return ResponseEntity.badRequest().build();
+    }
 }

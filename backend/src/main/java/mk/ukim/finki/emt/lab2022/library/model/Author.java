@@ -1,7 +1,5 @@
 package mk.ukim.finki.emt.lab2022.library.model;
 
-import lombok.Data;
-
 import javax.persistence.*;
 
 @Entity

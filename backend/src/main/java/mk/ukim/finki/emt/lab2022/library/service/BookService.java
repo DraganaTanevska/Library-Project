@@ -25,4 +25,5 @@ public interface BookService {
 
     Book markAsTaken(Long id);
 
+    Book returnBook(Long id);
 }

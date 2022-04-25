@@ -86,4 +86,12 @@ public class BookServiceImpl implements BookService {
         bookRepository.save(book);
         return book;
     }
+    @Override
+    public Book returnBook(Long id) {
+        Book book=bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException(id));
+        int availableCopies=book.getAvailableCopies()+1;
+        book.setAvailableCopies(availableCopies);
+        bookRepository.save(book);
+        return book;
+    }
 }

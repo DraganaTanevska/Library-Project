@@ -1,6 +1,5 @@
 package mk.ukim.finki.emt.lab2022.library.model;
 
-import lombok.Data;
 import mk.ukim.finki.emt.lab2022.library.model.enumerations.Category;
 
 import javax.persistence.*;
